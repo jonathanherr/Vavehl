@@ -17,4 +17,4 @@ function move(response) {
 }
 
 exports.start = start;
-exports.upload = move;
+exports.move = move;
