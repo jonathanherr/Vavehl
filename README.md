@@ -9,5 +9,5 @@ Workspace for building a game based on Lorin's Vavehl World.
 Javascript objects being built as test using a nodejs server to support standalone development - 
 to later be ported to Unity once basic functionality for various parts exist.
 
-NOte that the "bugs" project is a simple AI test world. Just some balls that move randomly(looks quite brownian) 
+Note that the "bugs" project is a simple AI test world. Just some balls that move randomly(looks quite brownian) 
 and have line of sight, simple statemachines(not working yet) and physics enabled. 
