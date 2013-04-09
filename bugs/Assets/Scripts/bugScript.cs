@@ -22,6 +22,7 @@ public class Bug{
 	}
 	//ctor
 	public Bug(Transform transform,float speed,float turnFreq){
+		stateMachines=new System.Collections.Generic.Dictionary<string,StateMachine>();
 		currentState=state.wandering;
 		this.transform=transform;
 		this.speed=speed;
@@ -77,7 +78,7 @@ public class Bug{
 	}
 	public void sense(){
 		
-		logState ();
+		//logState ();
 		foreach(Beacon beacon in worldBeacons){
 			if (Vector3.Angle(transform.forward, transform.position - beacon.transform.position) < fov/2) {
     			if(Vector3.Distance(transform.position,beacon.transform.position)<=sightRadius && Vector3.Distance(transform.position,beacon.transform.position)<=beacon.radius){
@@ -115,7 +116,9 @@ class EdgeComparer: System.Collections.Generic.IComparer<Edge>
 public class Node{
 		string name="";
 		System.Collections.Generic.List<Edge> edges=null;
-		
+		public string getLabel(){
+			return name;
+		}
 		public System.Collections.Generic.List<Edge> getEdges(){
 			return edges;
 		}
@@ -124,6 +127,7 @@ public class Node{
 			edges=new System.Collections.Generic.List<Edge>();
 			
 		}
+		
 		public Node addNeighbor(string label){
 			return addNeighbor(label,1.0f); 
 		}
@@ -181,13 +185,10 @@ public class StateMachine{
 			float total=0.0f;
 			foreach (Edge edge in currentNode.getEdges())
 			{	
-				
-				if(prob<=edge.value){
+				total+=edge.value;
+				if(prob<=total){
 					nextNode=edge.getToNode();
 					break; //once we've found our node, quit the loop. 
-				}
-				else{
-					total+=edge.value;
 				}
 			}
 			return nextNode;
@@ -195,6 +196,15 @@ public class StateMachine{
 		else{
 			return currentNode.getEdges()[0].getToNode();
 		}
+	}
+	public Node walk(Node node){
+		string tree=node.getLabel()+"\n";
+		foreach(Edge edge in node.getEdges()){
+			walk (edge.getToNode);
+		}
+	}
+	public string toString(){
+		
 	}
 }
 public class bugScript : MonoBehaviour {
