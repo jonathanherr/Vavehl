@@ -30,6 +30,7 @@ public class Bug{
 		//create bug state machine - TODO: load these from XML
 		stateMachines["idle"]=createIdleStateMachine();
 		stateMachines["action"]=createActionStateMachine();
+		Debug.Log(stateMachines["idle"].ToString());
 	}
 	public StateMachine createActionStateMachine(){
 		StateMachine stateMachine=new StateMachine("action");
@@ -41,8 +42,10 @@ public class Bug{
 		stateMachine.setStartNode(startNode);
 		Node hunger=startNode.addNeighbor("Hunger",.5f);
 		Node thirst=startNode.addNeighbor("Thirst",.5f);
+		startNode.addNeighbor("c",.5f);
+		startNode.addNeighbor("d",.5f);
 		hunger.addNeighbor(thirst);
-		thirst.addNeighbor(startNode);
+		//thirst.addNeighbor(startNode);
 		
 		return stateMachine;
 	}
@@ -82,7 +85,7 @@ public class Bug{
 		foreach(Beacon beacon in worldBeacons){
 			if (Vector3.Angle(transform.forward, transform.position - beacon.transform.position) < fov/2) {
     			if(Vector3.Distance(transform.position,beacon.transform.position)<=sightRadius && Vector3.Distance(transform.position,beacon.transform.position)<=beacon.radius){
-					Debug.Log("I see " + beacon.label);
+					//Debug.Log("I see " + beacon.label);
 					
 					(beacon.gameObject.GetComponent ("Halo") as Behaviour).enabled=true;
 					if(currentBeacon!=null && currentBeacon!=beacon)
@@ -132,8 +135,10 @@ public class Node{
 			return addNeighbor(label,1.0f); 
 		}
 		public Node addNeighbor(string label, float transitionProb){
+			
 			Node n=new Node(label);
 			addNeighbor(n,transitionProb);
+			
 			return n;
 		}
 		public Node addNeighbor(Node node){
@@ -171,6 +176,7 @@ public class Edge{
 public class StateMachine{
 	string name="";
 	Node currentNode;
+	public Node getStartNode(){return currentNode;}
 	public StateMachine(string label){
 		this.name=label;
 	}	
@@ -197,14 +203,16 @@ public class StateMachine{
 			return currentNode.getEdges()[0].getToNode();
 		}
 	}
-	public Node walk(Node node){
+	private string ToString(Node node){
 		string tree=node.getLabel()+"\n";
 		foreach(Edge edge in node.getEdges()){
-			walk (edge.getToNode);
+			tree+="\t"+ToString(edge.getToNode());
 		}
+		return tree;
 	}
-	public string toString(){
-		
+	
+	public string ToString(){
+		return ToString(currentNode);
 	}
 }
 public class bugScript : MonoBehaviour {
