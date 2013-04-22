@@ -99,14 +99,24 @@ public class Bug{
 			}
 		}
 	}
+	public void think(){
+		//think loop
+		//look around self
+		//check if current state is satisifed by current location
+		//if nothing in sight that satisfies state, move to other random object and repeat loop
+		//if object in sight satisfies state, go there
+		//TODO: beacons must indicate what they satisfy
+		
+		//use potential function to draw bot toward current goal 
+		
+	}
 	public void turn(Vector3 direction,float degrees){
 		this.transform.RotateAround(this.transform.position,direction,degrees);
 	}
 	public void randomTurn(){
 		this.transform.rotation=Random.rotation;
 	}
-	public void move(){
-		
+	public void walk(){
 		this.transform.rigidbody.AddRelativeForce(new Vector3(Random.Range(0.0f,1.0f),Random.Range(0.0f,1.0f),Random.Range(0.0f,1.0f))*this.speed);
 	}
 }
@@ -232,12 +242,13 @@ public class bugScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		bug.think();
 		bug.sense ();
 		if(bug.getState()==state.wandering){
 			float choice=Random.Range(0.0f,1.0f);
 			
 			if(choice>turnFreq){
-				bug.move ();
+				bug.walk ();
 			}
 			else{
 				bug.randomTurn ();
