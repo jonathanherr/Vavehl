@@ -5,6 +5,8 @@ Project("{E3255BAE-2206-1302-2D67-E26D2E4FA689}") = "bugs", "Assembly-CSharp-fir
 EndProject
 Project("{E3255BAE-2206-1302-2D67-E26D2E4FA689}") = "bugs", "Assembly-CSharp-vs.csproj", "{B864B399-DA4C-AB52-5903-839F34ACA242}"
 EndProject
+Project("{E3255BAE-2206-1302-2D67-E26D2E4FA689}") = "bugs", "Assembly-CSharp-Editor-vs.csproj", "{340D83B7-3EC5-C06B-8345-C73A38192E98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,11 +21,15 @@ Global
 		{B864B399-DA4C-AB52-5903-839F34ACA242}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B864B399-DA4C-AB52-5903-839F34ACA242}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B864B399-DA4C-AB52-5903-839F34ACA242}.Release|Any CPU.Build.0 = Release|Any CPU
+		{340D83B7-3EC5-C06B-8345-C73A38192E98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{340D83B7-3EC5-C06B-8345-C73A38192E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{340D83B7-3EC5-C06B-8345-C73A38192E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{340D83B7-3EC5-C06B-8345-C73A38192E98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																										GlobalSection(MonoDevelopProperties) = preSolution
+																																											GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

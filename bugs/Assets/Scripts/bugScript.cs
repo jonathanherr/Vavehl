@@ -22,6 +22,7 @@ public class Bug{
 	}
 	//ctor
 	public Bug(Transform transform,float speed,float turnFreq){
+		stateMachines=new System.Collections.Generic.Dictionary<string,StateMachine>();
 		currentState=state.wandering;
 		this.transform=transform;
 		this.speed=speed;
@@ -29,6 +30,7 @@ public class Bug{
 		//create bug state machine - TODO: load these from XML
 		stateMachines["idle"]=createIdleStateMachine();
 		stateMachines["action"]=createActionStateMachine();
+		Debug.Log(stateMachines["idle"].ToString());
 	}
 	public StateMachine createActionStateMachine(){
 		StateMachine stateMachine=new StateMachine("action");
@@ -40,8 +42,10 @@ public class Bug{
 		stateMachine.setStartNode(startNode);
 		Node hunger=startNode.addNeighbor("Hunger",.5f);
 		Node thirst=startNode.addNeighbor("Thirst",.5f);
+		startNode.addNeighbor("c",.5f);
+		startNode.addNeighbor("d",.5f);
 		hunger.addNeighbor(thirst);
-		thirst.addNeighbor(startNode);
+		//thirst.addNeighbor(startNode);
 		
 		return stateMachine;
 	}
@@ -77,11 +81,11 @@ public class Bug{
 	}
 	public void sense(){
 		
-		logState ();
+		//logState ();
 		foreach(Beacon beacon in worldBeacons){
 			if (Vector3.Angle(transform.forward, transform.position - beacon.transform.position) < fov/2) {
     			if(Vector3.Distance(transform.position,beacon.transform.position)<=sightRadius && Vector3.Distance(transform.position,beacon.transform.position)<=beacon.radius){
-					Debug.Log("I see " + beacon.label);
+					//Debug.Log("I see " + beacon.label);
 					
 					(beacon.gameObject.GetComponent ("Halo") as Behaviour).enabled=true;
 					if(currentBeacon!=null && currentBeacon!=beacon)
@@ -95,14 +99,24 @@ public class Bug{
 			}
 		}
 	}
+	public void think(){
+		//think loop
+		//look around self
+		//check if current state is satisifed by current location
+		//if nothing in sight that satisfies state, move to other random object and repeat loop
+		//if object in sight satisfies state, go there
+		//TODO: beacons must indicate what they satisfy
+		
+		//use potential function to draw bot toward current goal 
+		
+	}
 	public void turn(Vector3 direction,float degrees){
 		this.transform.RotateAround(this.transform.position,direction,degrees);
 	}
 	public void randomTurn(){
 		this.transform.rotation=Random.rotation;
 	}
-	public void move(){
-		
+	public void walk(){
 		this.transform.rigidbody.AddRelativeForce(new Vector3(Random.Range(0.0f,1.0f),Random.Range(0.0f,1.0f),Random.Range(0.0f,1.0f))*this.speed);
 	}
 }
@@ -115,7 +129,9 @@ class EdgeComparer: System.Collections.Generic.IComparer<Edge>
 public class Node{
 		string name="";
 		System.Collections.Generic.List<Edge> edges=null;
-		
+		public string getLabel(){
+			return name;
+		}
 		public System.Collections.Generic.List<Edge> getEdges(){
 			return edges;
 		}
@@ -124,12 +140,15 @@ public class Node{
 			edges=new System.Collections.Generic.List<Edge>();
 			
 		}
+		
 		public Node addNeighbor(string label){
 			return addNeighbor(label,1.0f); 
 		}
 		public Node addNeighbor(string label, float transitionProb){
+			
 			Node n=new Node(label);
 			addNeighbor(n,transitionProb);
+			
 			return n;
 		}
 		public Node addNeighbor(Node node){
@@ -167,6 +186,7 @@ public class Edge{
 public class StateMachine{
 	string name="";
 	Node currentNode;
+	public Node getStartNode(){return currentNode;}
 	public StateMachine(string label){
 		this.name=label;
 	}	
@@ -181,13 +201,10 @@ public class StateMachine{
 			float total=0.0f;
 			foreach (Edge edge in currentNode.getEdges())
 			{	
-				
-				if(prob<=edge.value){
+				total+=edge.value;
+				if(prob<=total){
 					nextNode=edge.getToNode();
 					break; //once we've found our node, quit the loop. 
-				}
-				else{
-					total+=edge.value;
 				}
 			}
 			return nextNode;
@@ -195,6 +212,17 @@ public class StateMachine{
 		else{
 			return currentNode.getEdges()[0].getToNode();
 		}
+	}
+	private string ToString(Node node){
+		string tree=node.getLabel()+"\n";
+		foreach(Edge edge in node.getEdges()){
+			tree+="\t"+ToString(edge.getToNode());
+		}
+		return tree;
+	}
+	
+	public string ToString(){
+		return ToString(currentNode);
 	}
 }
 public class bugScript : MonoBehaviour {
@@ -214,12 +242,13 @@ public class bugScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		bug.think();
 		bug.sense ();
 		if(bug.getState()==state.wandering){
 			float choice=Random.Range(0.0f,1.0f);
 			
 			if(choice>turnFreq){
-				bug.move ();
+				bug.walk ();
 			}
 			else{
 				bug.randomTurn ();
