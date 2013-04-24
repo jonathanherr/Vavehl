@@ -1,0 +1,10 @@
+RAIN{indie} v1.3
+--------------
+
+Welcome to RAIN{indie}, a powerful tool for adding AI capabilities to your Unity project. 
+
+Release notes, documentation, and sample projects can be are available at http://support.rivaltheory.com and http://support.rivaltheory.com/documentation
+
+Sign up for news and updates, including notifications of free product updates, by visiting http://www.rivaltheory.com or contacting jester@rivaltheory.com via email.
+
+
