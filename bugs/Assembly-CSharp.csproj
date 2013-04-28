@@ -51,11 +51,11 @@
      <Compile Include="Assets\Scripts\homeScript.cs" />
      <Compile Include="Assets\Scripts\mainScript.cs" />
      <Compile Include="Assets\Scripts\waterScript.cs" />
+     <None Include="Assets\AI\Resources\BehaviorTrees\BasicGrid.xml" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\AI\Resources\BehaviorTrees\gathererTree.xml" />
      <None Include="Assets\RAIN\releasenotes.txt" />
-     <None Include="Assets\AI\Resources\BehaviorTrees\test.xml" />
-     <None Include="Assets\AI\Resources\BehaviorTrees\mindtest1.xml" />
-     <None Include="Assets\AI\Resources\BehaviorTrees\bug.xml" />
+     <None Include="Assets\AI\Resources\BehaviorTrees\bugbehavior.xml" />
      <None Include="Assets\RAIN\Editor\ScriptTemplates\BehaviorTreeTemplate.xml" />
  <Reference Include="RAINIndie">
  <HintPath>Assets\RAIN\RAINIndie.dll</HintPath>

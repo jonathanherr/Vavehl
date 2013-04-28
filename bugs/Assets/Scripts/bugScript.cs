@@ -242,6 +242,7 @@ public class bugScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		/*
 		bug.think();
 		bug.sense ();
 		if(bug.getState()==state.wandering){
@@ -257,5 +258,6 @@ public class bugScript : MonoBehaviour {
 		else if(bug.getState()==state.hungry){
 			
 		}
+		*/
 	}
 }
