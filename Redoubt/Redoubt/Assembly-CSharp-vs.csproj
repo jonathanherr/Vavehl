@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_WEBPLAYER;WEBPLUG;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_1_2;UNITY_4_1;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_1_2;UNITY_4_1;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -45,21 +45,54 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\0000 ats V2 package\atsV2 UnityTerrainBump Package\CustomTerrainScriptAtsV2.cs" />
+     <Compile Include="Assets\Demo.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Generator\Billow.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Generator\Checker.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Generator\Const.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Generator\Cylinders.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Generator\Perlin.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Generator\RiggedMultifractal.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Generator\Spheres.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Generator\Voronoi.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Gradient.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\ModuleBase.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Noise2D.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Abs.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Add.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Blend.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Cache.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Clamp.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Curve.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Displace.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Exponent.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Invert.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Max.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Min.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Multiply.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Power.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Rotate.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Scale.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\ScaleBias.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Select.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Subtract.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Terrace.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Translate.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Operator\Turbulence.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Properties\AssemblyInfo.cs" />
+     <Compile Include="Assets\Resources\LibNoise.Unity\Utils.cs" />
+     <Compile Include="Assets\Sources\LightningBolt.cs" />
      <None Include="Assets\0000 ats V2 package\readme_treeBarkShader.txt" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
-     <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets\water well\readme.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
-     <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
-     <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
      <None Include="Assets\0000 ats V2 package\readme_grassShader.txt" />
-     <None Include="Assets\Forest Grounds - Terrain Texture Pack\Readme.txt" />
+     <None Include="Assets\Models\Forest Grounds - Terrain Texture Pack\Readme.txt" />
      <None Include="Assets\0000 ats V2 package\atsV2 billboardShader package\TreeCreatorLeavesRendertex.shader" />
      <None Include="Assets\0000 ats V2 package\atsV2 billboardShader package\TreeCreatorBarkRendertex.shader" />
      <None Include="Assets\Standard Assets\Tessellation Shaders\BumpedSpecularSmooth.shader" />
+     <None Include="Assets\Resources\LibNoise.Unity\COPYING.txt" />
      <None Include="Assets\0000 ats V2 package\ats pathShader Package\Shader\ats Road Path bumped diffuse alphatest.shader" />
-     <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Detail.shader" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\RAIN\Editor\ScriptTemplates\BehaviorTreeTemplate.xml" />
      <None Include="Assets\0000 ats V2 package\ats vertexLitShader Package\Shader\atsv2 vertexlit.shader" />
@@ -74,20 +107,16 @@
      <None Include="Assets\AI\Resources\BehaviorTrees\sheepBehavior.xml" />
      <None Include="Assets\0000 ats V2 package\atsV2 UnityTerrainBump Package\TerrainReplacementAtsV2.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
-     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Reflective.shader" />
-     <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Particles Additive Culled.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\RAIN\releasenotes.txt" />
+     <None Include="Assets\Resources\LibNoise.Unity\COPYING.LESSER.txt" />
      <None Include="Assets\AI\Resources\BehaviorTrees\skellyBrain.xml" />
-     <None Include="Assets\SkeletonData\animations.txt" />
-     <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Vertex Colored.shader" />
-     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Only.shader" />
-     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap AlphaTest.shader" />
+     <None Include="Assets\Models\SkeletonData\animations.txt" />
      <None Include="Assets\AI\Resources\BehaviorTrees\BasicGrid.xml" />
      <None Include="Assets\AI\Resources\BehaviorTrees\bugbehavior.xml" />
      <None Include="Assets\Standard Assets\Tessellation Shaders\BumpedSpecularDisplacement.shader" />
-     <None Include="Assets\MedievalHouse\Readme.txt" />
+     <None Include="Assets\Models\MedievalHouse\Readme.txt" />
      <None Include="Assets\0000 ats V2 package\readme_vertexLitShader.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
